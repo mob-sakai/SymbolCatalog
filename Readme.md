@@ -1,0 +1,1 @@
+./Assets/Mobcast/Coffee/Editor/SymbolCatalog/Readme.md
