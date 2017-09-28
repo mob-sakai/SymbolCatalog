@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1fc6a9dbb9a934f8d2086a350d2586, type: 3}
+  m_Name: SymbolCatalog
+  m_EditorClassIdentifier: 
+  list:
+  - style: 11
+    name: NEW_SYMBOL
+    description: Environments
+  - style: 1
+    name: DEVELOPMENT_BUILD
+    description: For <color=green>Develop</color>
+  - style: 1
+    name: PRODUCTION
+    description: For <color=red>Production</color>
+  - style: 11
+    name: NEW_SYMBOL
+    description: Debug Modes
+  - style: 1
+    name: SHOW_LOG
+    description: Show log on console
+  - style: 1
+    name: SHOW_FPS
+    description: Show FPS
+  - style: 1
+    name: SHOW_MEM
+    description: Show Memory usage
+  - style: 10
+    name: NEW_SYMBOL
+    description: Comment(<i>option, ritch text enabled</i>)
+  - style: 1
+    name: FAKE_PURCHACE
+    description: Fake Purchace
+  - style: 11
+    name: NEW_SYMBOL
+    description: Comment(<i>option, ritch text enabled</i>)
+  - style: 10
+    name: 
+    description: 
