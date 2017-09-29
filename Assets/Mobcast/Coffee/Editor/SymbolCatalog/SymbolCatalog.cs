@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Mobcast.Coffee.Editor
+namespace Mobcast.CoffeeEditor
 {
 	/// <summary>
 	/// [アセット]定義シンボルカタログクラス.

@@ -34,6 +34,10 @@ A tool for edit script symbol define for Unity.
 
 ## Release Notes
 
+### ver.0.2.1:
+
+* Changed: Change namespace to `Mobcast.CoffeeEditor`.
+
 ### ver.0.2.0:
 
 * Feature: Delete button at each symbols.
