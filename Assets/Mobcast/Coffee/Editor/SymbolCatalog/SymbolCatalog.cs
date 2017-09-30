@@ -44,7 +44,6 @@ namespace Mobcast.CoffeeEditor
 			// Convert active symbols to string.
 			string defineSymbols = defines.Any() ? defines.Aggregate((a, b) => a + ";" + b) : string.Empty;
 
-			Debug.Log(defineSymbols);
 			// ターゲットグループの定義シンボルに適用.
 			// Apply to build target platforms.
 			foreach (BuildTargetGroup group in targetGroups)
@@ -59,7 +58,6 @@ namespace Mobcast.CoffeeEditor
 
 				try
 				{
-					Debug.Log(group + ", " + (int)group);
 					PlayerSettings.SetScriptingDefineSymbolsForGroup(group, "");
 					PlayerSettings.SetScriptingDefineSymbolsForGroup(group, defineSymbols);
 				}
@@ -167,9 +165,10 @@ namespace Mobcast.CoffeeEditor
 		Vector2 scrollPosition;
 
 		//---- ▼ GUIキャッシュ ▼ ----
-		static readonly ReorderableList ro = new ReorderableList(new List<SymbolCatalog>(), typeof(SymbolCatalog));
+		static ReorderableList ro;
 		static GUIStyle styleTitle;
 		static GUIStyle styleHeader;
+		static GUIStyle styleName;
 		static GUIStyle styleDescription;
 		static readonly Color EnableStyleColor = new Color(0.5f, 0.5f, 0.5f, 1f);
 		static readonly Color EnableTextColor = Color.white;
@@ -188,6 +187,13 @@ namespace Mobcast.CoffeeEditor
 			styleTitle.stretchWidth = true;
 			styleTitle.margin = new RectOffset();
 
+			// シンボル名
+			styleName = new GUIStyle(EditorStyles.label);
+			styleName.active.textColor =
+				styleName.normal.textColor =
+				styleName.focused.textColor =
+				styleName.hover.textColor = Color.white;
+
 			// シンボル説明スタイル
 			styleDescription = new GUIStyle("HelpBox");
 			styleDescription.richText = true;
@@ -204,6 +210,7 @@ namespace Mobcast.CoffeeEditor
 			styleHeader.wordWrap = false;
 
 			// シンボルリスト
+			ro = new ReorderableList(new List<SymbolCatalog>(), typeof(SymbolCatalog));
 			ro.drawElementCallback = DrawSymbol;
 			ro.headerHeight = 0;
 			ro.onAddDropdownCallback = (rect, list) =>
@@ -454,8 +461,8 @@ namespace Mobcast.CoffeeEditor
 			string symbolNameId = string.Format("symbol neme {0}", index);
 			GUI.SetNextControlName(symbolNameId);
 			GUI.color = symbol.enabled ? EnableTextColor : DisableTextColor;
-			GUIStyle labelStyle = EditorGUIUtility.isProSkin ? EditorStyles.boldLabel : EditorStyles.whiteBoldLabel;
-			symbol.name = GUI.TextField(new Rect(rect.x + 20, rect.y, rect.width - 40, 16), symbol.name, labelStyle);
+			styleName.fontStyle = GUI.GetNameOfFocusedControl() != symbolNameId ? FontStyle.Bold : FontStyle.Normal;
+			symbol.name = GUI.TextField(new Rect(rect.x + 20, rect.y, rect.width - 40, 16), symbol.name, styleName);
 			GUI.color = Color.white;
 
 			// シンボル削除ボタンを描画します.
